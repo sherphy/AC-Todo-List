@@ -25,30 +25,17 @@ export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth
     descEle.class = "desc";
     taskContainer.append(descEle);
 
-    // //date
-    // const dateInput = document.createElement("input");
-    // dateInput.type = 'date';
-    // dateInput.className = "task-date";
-    // const dateInputLabel = document.createElement("label");
-    // dateInputLabel.textContent = "Due: ";
-    // taskTitle.append(dateInputLabel);
-    // taskTitle.append(dateInput);
+    //date
+    const dateEle = document.createElement("h5");
+    dateEle.innerText = dateDay + '/' + dateMonth + '/' + dateYear;
+    dateEle.class = "date";
+    taskContainer.append(dateEle);
 
-    // //priority
-    // const priorityInput = document.createElement("input");
-    // priorityInput.type = 'checkbox';
-    // priorityInput.className = "task-priority";
-    // const priorityInputLabel = document.createElement("label");
-    // priorityInputLabel.className = "task-priority-label";
-    // priorityInputLabel.textContent = "Priority ";
-    // taskTitle.append(priorityInputLabel);
-    // taskTitle.append(priorityInput);
+    //priority
+    //not working yet
+    if (priority) {
+        titleEle.addClass("priority");
+    }
 
-    // //submit button
-    // const addTaskSubmitButton = document.createElement("button");
-    // addTaskSubmitButton.type = 'submit';
-    // addTaskSubmitButton.className = 'task-submit';
-    // addTaskSubmitButton.textContent = "Submit";
-    // taskTitle.appendChild(addTaskSubmitButton);
     console.log("inputTasks");
 };

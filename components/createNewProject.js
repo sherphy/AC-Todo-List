@@ -80,7 +80,7 @@
 
 //FINAL VERSION NO CRAP 
 import addTaskButtonFunction from "./addTaskButton.js";
-import addTaskContainerCreation from "./tasks.js";
+import createIcons from "./createIcons.js";
 
 (function defaultProject() {
   addTaskButtonFunction();
@@ -97,11 +97,18 @@ export default function createNewProject() {
     const projectOl = document.createElement("ol");
     projectOl.id = `project-ol-${counter}`
     projectDiv.append(projectOl);
+
     const projectTitle = document.createElement("h3");
     projectTitle.innerText = document
       .querySelector("#project-name")
       .value.toUpperCase();
     projectDiv.append(projectTitle);
+
+    const projectIcon = document.createElement("img");
+    createIcons(projectIcon, counter);
+    projectIcon.className = "project-icon";
+    projectTitle.append(projectIcon);
+
     const projectBody = document.getElementById("project-body");
     projectBody.append(projectDiv);
     projectForm.reset();

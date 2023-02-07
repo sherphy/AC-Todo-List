@@ -91,8 +91,17 @@ input[type=submit] {
 .project > h3 {
     justify-content: center;
     display: flex;
+    flex-direction: row-reverse;
     overflow-wrap: normal;
+    margin-bottom: 0.2em;
 }
+
+.project-icon {
+    width: 30px;
+    height: 35px;
+    margin-right: 0.2em;
+}
+
 
 .project > button {
     background-color:rgb(140, 240, 179);

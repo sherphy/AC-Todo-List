@@ -107,24 +107,35 @@ input[type=submit] {
     border: 1px solid grey;
 }
 
+/* tasks */
+li {
+    list-style-position: inside;
+    list-style-image: url("./utils/rsz_11animal_crossing_leafsvg.png");
+    padding-top: 0.4em; 
+}
+
 .priority {
     text-decoration: solid;
     background-color: rgba(248, 145, 145, 0.911);
     width: max-content;
 }
 
-li {
-    list-style-position: inside;
-    list-style-image: url("./utils/rsz_11animal_crossing_leafsvg.png");  
+.title {
+    font-size: x-large;
+    display: inline-block;}
+
+.date {
+    float: right;
+    color: #5cb6da;
 }
 
-li::marker {
-    margin-top: 50%;
+.desc {
+    font-size: large;
 }
 
 /* form inputs */
 .add-task-form > * {
-    display: flex;
+    display: block;
     font-size: medium;
 }
 

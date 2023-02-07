@@ -1,4 +1,4 @@
-
+var listTaskCounter = 1;
 export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth, dateDay, priority, counter) {
     const parentContainer = document.getElementById(`project-${counter}`);
 
@@ -9,33 +9,35 @@ export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth
     const addTaskContainer = document.getElementById(`add-task-container-${counter}`);
     parentContainer.removeChild(addTaskContainer);
     
-    const taskContainer = document.createElement("div");
-    parentContainer.append(taskContainer);
-    alert(parentContainer.id);
+    //ordered list
+    const olContainer = document.getElementById(`project-ol-${counter}`);
+    parentContainer.append(olContainer);
+
+    const taskContainer = document.createElement("li");
+    olContainer.append(taskContainer);
 
     //title
     const titleEle = document.createElement("h1");
-    titleEle.innerText = title;
-    titleEle.class = "title";
+    titleEle.innerText = title.toUpperCase();
+    titleEle.className = "title";
     taskContainer.append(titleEle);
-
-    //description
-    const descEle = document.createElement("h3");
-    descEle.innerText = desc;
-    descEle.class = "desc";
-    taskContainer.append(descEle);
 
     //date
     const dateEle = document.createElement("h5");
     dateEle.innerText = dateDay + '/' + dateMonth + '/' + dateYear;
-    dateEle.class = "date";
+    dateEle.className = "date";
     taskContainer.append(dateEle);
 
+    //description
+    const descEle = document.createElement("h3");
+    descEle.innerText = desc;
+    descEle.className = "desc";
+    taskContainer.append(descEle);
+
     //priority
-    //not working yet
-    if (priority) {
-        titleEle.addClass("priority");
+    if (priority.checked) {
+        titleEle.classList.add("priority");
     }
 
-    console.log("inputTasks");
+    listTaskCounter++;
 };

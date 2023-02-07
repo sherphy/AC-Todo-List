@@ -80,6 +80,7 @@
 
 //FINAL VERSION NO CRAP 
 import addTaskButtonFunction from "./addTaskButton.js";
+import addTaskContainerCreation from "./tasks.js";
 
 (function defaultProject() {
   addTaskButtonFunction();
@@ -93,6 +94,9 @@ export default function createNewProject() {
     const projectDiv = document.createElement("div");
     projectDiv.className = "project";
     projectDiv.id = `project-${counter}`;
+    const projectOl = document.createElement("ol");
+    projectOl.id = `project-ol-${counter}`
+    projectDiv.append(projectOl);
     const projectTitle = document.createElement("h3");
     projectTitle.innerText = document
       .querySelector("#project-name")

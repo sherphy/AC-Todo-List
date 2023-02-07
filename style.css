@@ -122,18 +122,26 @@ li {
 
 .title {
     font-size: x-large;
-    display: inline-block;}
+    display: inline-block;
+}
 
 .date {
+    margin: 0 0 0 1em;
     float: right;
     color: #5cb6da;
 }
 
 .desc {
     font-size: large;
+    color: rgb(128, 126, 126);
 }
 
 /* form inputs */
+.add-task-container {
+    display: flex;
+    justify-content: center;
+}
+
 .add-task-form > * {
     display: block;
     font-size: medium;

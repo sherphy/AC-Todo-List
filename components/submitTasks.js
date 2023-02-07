@@ -6,10 +6,21 @@ export default function submitTasks(submitButton,taskInput,
     e.preventDefault();
     const title = taskInput.value;
     const desc = descInput.value;
-    const date = new Date(dateInput.value);
-    const dateYear = date.getFullYear();
-    const dateMonth = date.getMonth() + 1;
-    const dateDay = date.getDate();
+    
+    let dateYear;
+    let dateMonth;
+    let dateDay;
+    if (dateInput.value === "") {
+      dateYear = "";
+      dateMonth = "";
+      dateDay = "";
+    } else {
+      const date = new Date(dateInput.value);
+      dateYear = date.getFullYear();
+      dateMonth = date.getMonth() + 1;
+      dateDay = date.getDate();
+    }
+    
     const priority = priorityInput;
 
     inputTasksIntoContainer(title, desc, dateYear, dateMonth, dateDay, priority, counter);

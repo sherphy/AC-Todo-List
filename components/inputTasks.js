@@ -24,7 +24,12 @@ export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth
 
     //date
     const dateEle = document.createElement("h5");
-    dateEle.innerText = dateDay + '/' + dateMonth + '/' + dateYear;
+    if (dateDay === '') {
+        dateEle.innerText = '';
+    }
+    else {
+        dateEle.innerText = dateDay + '/' + dateMonth + '/' + dateYear;
+    }
     dateEle.className = "date";
     taskContainer.append(dateEle);
 

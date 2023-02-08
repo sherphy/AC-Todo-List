@@ -4,7 +4,7 @@ export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth
 
     //makes the add task button come back
     const addTaskButton = document.getElementById(`addTaskButton-${counter}`);
-    addTaskButton.style.display = 'inherit';
+    addTaskButton.style.display = 'initial';
 
     const addTaskContainer = document.getElementById(`add-task-container-${counter}`);
     parentContainer.removeChild(addTaskContainer);

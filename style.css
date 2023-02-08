@@ -58,7 +58,7 @@ input[id=project-name]:focus {
 input[type=submit] {
     width: 2rem;
     height: 2rem;
-    background-color: rgb(140, 240, 179);
+    background-color: rgb(174, 243, 200);
     border: 0px;
     border-radius: 15%;
 }
@@ -102,18 +102,20 @@ input[type=submit] {
     margin-right: 0.2em;
 }
 
-
-.project > button {
-    background-color:rgb(140, 240, 179);
-    display: flex;
+button {
+    background-color:rgb(174, 243, 200);
     text-align: center;
     margin: 0 auto;
     font-size: large;
     padding: 0.5rem;
-    align-items: center;
     width: auto;
     border-radius: 10%;
     border: 1px solid grey;
+}
+
+/* edit button */
+.edit-button {
+    background-color: #f5baf7ec;
 }
 
 /* tasks */
@@ -179,3 +181,4 @@ li {
     margin: auto;
     padding: 2% 2%;
 }
+

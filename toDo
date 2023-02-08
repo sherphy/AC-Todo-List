@@ -1,4 +1,7 @@
 edit tasks and project name option
+delete project option 
+checkbox to automatically delete tasks 
+add Back button when submitting form
 background-y need to span infinite
 localstorage
 input forms hover

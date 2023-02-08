@@ -109,7 +109,7 @@ input[type=submit] {
 
 button {
     background-color:rgb(174, 243, 200);
-    margin: 0 0.5rem;
+    margin: 0 0.5rem 0.5rem 0.5rem;
     font-size: large;
     padding: 0.5rem;
     width: auto;
@@ -127,11 +127,17 @@ li {
     list-style-position: inside;
     list-style-image: url("./utils/rsz_11animal_crossing_leafsvg.png");
     padding-top: 0.4em; 
+    color:#4ec8f8;
+}
+
+li:hover {
+    background-color: rgba(238, 238, 238, 0.705);
+    border-radius: 5%;
 }
 
 .priority {
     text-decoration: solid;
-    background-color: rgba(248, 145, 145, 0.911);
+    color: rgb(248, 120, 120);
     width: max-content;
 }
 
@@ -143,7 +149,7 @@ li {
 .date {
     margin: 0 0 0 1em;
     float: right;
-    color: #5cb6da;
+    color: rgb(128, 126, 126);
 }
 
 .desc {

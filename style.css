@@ -109,7 +109,7 @@ input[type=submit] {
 
 button {
     background-color:rgb(174, 243, 200);
-    margin: 0 0.5rem;
+    margin: 0 0.5rem 0.5rem 0.5rem;
     font-size: large;
     padding: 0.5rem;
     width: auto;
@@ -128,6 +128,11 @@ li {
     list-style-image: url("./utils/rsz_11animal_crossing_leafsvg.png");
     padding-top: 0.4em; 
     color:#4ec8f8;
+}
+
+li:hover {
+    background-color: rgba(238, 238, 238, 0.705);
+    border-radius: 5%;
 }
 
 .priority {

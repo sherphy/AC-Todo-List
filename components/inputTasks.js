@@ -17,6 +17,7 @@ export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth
     parentContainer.append(olContainer);
 
     const taskContainer = document.createElement("li");
+    taskContainer.id=`project-${counter}-list-${listTaskCounter}`;
     olContainer.append(taskContainer);
 
     //title

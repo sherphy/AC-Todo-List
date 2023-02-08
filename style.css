@@ -127,11 +127,12 @@ li {
     list-style-position: inside;
     list-style-image: url("./utils/rsz_11animal_crossing_leafsvg.png");
     padding-top: 0.4em; 
+    color:#4ec8f8;
 }
 
 .priority {
     text-decoration: solid;
-    background-color: rgba(248, 145, 145, 0.911);
+    color: rgb(248, 120, 120);
     width: max-content;
 }
 
@@ -143,7 +144,7 @@ li {
 .date {
     margin: 0 0 0 1em;
     float: right;
-    color: #5cb6da;
+    color: rgb(128, 126, 126);
 }
 
 .desc {

@@ -102,10 +102,14 @@ input[type=submit] {
     margin-right: 0.2em;
 }
 
+.button-div {
+    display: flex;
+    justify-content: center;
+}
+
 button {
     background-color:rgb(174, 243, 200);
-    text-align: center;
-    margin: 0 auto;
+    margin: 0 0.5rem;
     font-size: large;
     padding: 0.5rem;
     width: auto;

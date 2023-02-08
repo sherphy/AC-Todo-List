@@ -1,10 +1,11 @@
-export default function editTask(projectDivID) {
-    editTaskButtonCreation(projectDivID);
+export default function editTask(buttonDiv, buttonCounter) {
+    editTaskButtonCreation(buttonDiv, buttonCounter);
 }
 
-function editTaskButtonCreation(projectDivID) {
+function editTaskButtonCreation(buttonDiv, buttonCounter) {
     const editTaskButton = document.createElement("button");
     editTaskButton.innerHTML = "Edit";
     editTaskButton.className = "edit-button";
-    projectDivID.append(editTaskButton);
+    editTaskButton.id = `editButton-${buttonCounter}`;
+    buttonDiv.append(editTaskButton);
 }

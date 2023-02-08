@@ -58,17 +58,21 @@ import addTaskContainerCreation from "./tasks.js";
 
 var buttonCounter = 0;
 export default function addTaskButtonFunction() {
+  const buttonDiv = document.createElement("div");
+  buttonDiv.id = `button-div-${buttonCounter}`;
+  buttonDiv.className = "button-div";
   const addTaskButton = document.createElement("button");
   addTaskButton.className = "add-task-button";
   addTaskButton.id = `addTaskButton-${buttonCounter}`;
   addTaskButton.innerHTML = "Add Task";
   const projectDivID = document.getElementById(`project-${buttonCounter}`);
-  projectDivID.append(addTaskButton);
+  projectDivID.append(buttonDiv);
+  buttonDiv.append(addTaskButton);
   addTaskButtonClickHandler();
 
   //didnt change the function name for addTaskButtonFunction()
   //but i should... but anyway this is for edit task button
-  editTask(projectDivID);
+  editTask(buttonDiv, buttonCounter);
   
   buttonCounter++;
 }
@@ -77,6 +81,7 @@ function addTaskButtonClickHandler() {
   const getAddTaskButton = document.getElementById(
     `addTaskButton-${buttonCounter}`
   );
+
   getAddTaskButton.addEventListener("click", (e) => {
     const addTasks = addTaskContainerCreation(e);
     //to hide the Add Task button

@@ -1,5 +1,12 @@
 edit tasks and project name option
+
 delete project option 
+// Delete existing to-do item
+function deleteToDo(event) {
+  let item = event.target.parentNode;
+  toDoItems.removeChild(item);
+}
+
 checkbox to automatically delete tasks 
 add Back button when submitting form
 background-y need to span infinite

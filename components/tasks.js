@@ -27,42 +27,10 @@ export default function addTaskContainerCreation(e) {
     taskTitle.className = "add-task-form"
     taskContainer.append(taskTitle);
 
-    //title
-    const taskInput = document.createElement("input");
-    taskInput.type = 'text';
-    taskInput.className = "task-title";
-    const taskInputLabel = document.createElement("label");
-    taskInputLabel.textContent = "Title: ";
-    taskTitle.append(taskInputLabel);
-    taskTitle.append(taskInput);
-
-    //description
-    const descInput = document.createElement("textarea");
-    descInput.className = "task-description";
-    descInput.rows = "3";
-    const descInputLabel = document.createElement("label");
-    descInputLabel.textContent = "Description: ";
-    taskTitle.append(descInputLabel);
-    taskTitle.append(descInput);
-
-    //date
-    const dateInput = document.createElement("input");
-    dateInput.type = 'date';
-    dateInput.className = "task-date";
-    const dateInputLabel = document.createElement("label");
-    dateInputLabel.textContent = "Due: ";
-    taskTitle.append(dateInputLabel);
-    taskTitle.append(dateInput);
-
-    //priority
-    const priorityInput = document.createElement("input");
-    priorityInput.type = 'checkbox';
-    priorityInput.className = "task-priority";
-    const priorityInputLabel = document.createElement("label");
-    priorityInputLabel.className = "task-priority-label";
-    priorityInputLabel.textContent = "Priority ";
-    taskTitle.append(priorityInputLabel);
-    taskTitle.append(priorityInput);
+    const {taskInput,
+        descInput,
+        dateInput,
+        priorityInput } = createForm(taskTitle);
 
     //submit button
     const addTaskSubmitButton = document.createElement("button");
@@ -79,6 +47,51 @@ export default function addTaskContainerCreation(e) {
     submitTasks(addTaskSubmitButton,taskInput,descInput,dateInput,priorityInput, counter);
 
     return taskContainer;
-}
+};
 
+export function createForm(taskTitle) {
+     //title
+     const taskInput = document.createElement("input");
+     taskInput.type = 'text';
+     taskInput.className = "task-title";
+     const taskInputLabel = document.createElement("label");
+     taskInputLabel.textContent = "Title: ";
+     taskTitle.append(taskInputLabel);
+     taskTitle.append(taskInput);
+ 
+     //description
+     const descInput = document.createElement("textarea");
+     descInput.className = "task-description";
+     descInput.rows = "3";
+     const descInputLabel = document.createElement("label");
+     descInputLabel.textContent = "Description: ";
+     taskTitle.append(descInputLabel);
+     taskTitle.append(descInput);
+ 
+     //date
+     const dateInput = document.createElement("input");
+     dateInput.type = 'date';
+     dateInput.className = "task-date";
+     const dateInputLabel = document.createElement("label");
+     dateInputLabel.textContent = "Due: ";
+     taskTitle.append(dateInputLabel);
+     taskTitle.append(dateInput);
+ 
+     //priority
+     const priorityInput = document.createElement("input");
+     priorityInput.type = 'checkbox';
+     priorityInput.className = "task-priority";
+     const priorityInputLabel = document.createElement("label");
+     priorityInputLabel.className = "task-priority-label";
+     priorityInputLabel.textContent = "Priority ";
+     taskTitle.append(priorityInputLabel);
+     taskTitle.append(priorityInput);
+
+     return {
+        taskInput,
+        descInput,
+        dateInput,
+        priorityInput
+     };
+}
 

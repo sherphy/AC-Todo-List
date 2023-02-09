@@ -1,7 +1,7 @@
 import inputTasksIntoContainer from "./inputTasks.js";
 
 export default function submitTasks(submitButton,taskInput,
-    descInput,dateInput,priorityInput, counter) {
+    descInput,dateInput,priorityInput,counter) {
   submitButton.addEventListener("click", function (e) {
     e.preventDefault();
     const title = taskInput.value;

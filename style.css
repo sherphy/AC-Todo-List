@@ -158,14 +158,15 @@ li:hover {
 }
 
 /* form inputs */
-.add-task-container {
+.add-task-container, .edit-form-container {
     display: flex;
     justify-content: center;
 }
 
-.add-task-form > * {
+.add-task-form > * , .edit-form > * {
     display: block;
     font-size: medium;
+    color: black;
 }
 
 .task-priority-label, .task-priority

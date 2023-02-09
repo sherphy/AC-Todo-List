@@ -20,7 +20,6 @@ function editTaskButtonHandler(buttonCounter) {
         const addButton = document.getElementById(`addTaskButton-${buttonCounter}`);
         addButton.style.display = 'none';
 
-        console.log(e.target.id);
         editSelection(buttonCounter);
 
         editTaskButton.innerText = "Return";
@@ -47,7 +46,6 @@ function showForm(e, buttonCounter) {
     const formContainer = document.createElement("form");
     formDiv.append(formContainer);
     formContainer.className = "edit-form";
-    console.log(e.target.id);
     const getLi = document.getElementById(e.target.id);
     formContainer.id = `project-${buttonCounter}-edit-li-${e.target.id}`;
     getLi.append(formDiv);
@@ -55,13 +53,27 @@ function showForm(e, buttonCounter) {
         descInput,
         dateInput,
         priorityInput} = createForm(formContainer);
-    taskInput.innerText = getLi.h3;
-}
-//     const formDate = 
-//     const formDesc = 
-//     const formPriority = 
+    taskInput.value = getLi.querySelector('h1').innerText;
+    descInput.value = getLi.querySelector('h3').innerText;
 
-//     formTitle.value = 
+    //must change to yyyy/mm/dd
+    const newDateSplit = getLi.querySelector('h5').innerText.split("/");
+    var date = newDateSplit[0];
+    if (date <= 9) {
+        date = '0' + date;
+    }
+    var month = newDateSplit[1];
+    if (month <= 9) {
+        month = '0' + month; 
+    }
+    const year = newDateSplit[2];
+    const newDate = year + '-' + month + '-' + date;
+    dateInput.value = newDate;
+
+    if (getLi.querySelector('h1').className === 'priority') {
+        priorityInput.checked;
+    }
+}
 
 // function returnHandler(buttonCounter) {
 //     const editTaskButton = document.getElementById(`editButton-${buttonCounter}`);

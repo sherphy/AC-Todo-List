@@ -41,18 +41,21 @@ function editSelection(buttonCounter) {
 }
 
 function showForm(e, buttonCounter) {
+    const getLi = document.getElementById(e.currentTarget.id);
+
     const formDiv = document.createElement("div");
     formDiv.className = "edit-form-container";
-    const formContainer = document.createElement("form");
-    formDiv.append(formContainer);
-    formContainer.className = "edit-form";
-    const getLi = document.getElementById(e.target.id);
-    formContainer.id = `project-${buttonCounter}-edit-li-${e.target.id}`;
     getLi.append(formDiv);
+
+    const formContainer = document.createElement("form");
     const {taskInput,
         descInput,
         dateInput,
         priorityInput} = createForm(formContainer);
+    formDiv.append(formContainer);
+    formContainer.className = "edit-form";
+    // formContainer.id = `project-${buttonCounter}-edit-li-${e.currentTarget.id}`;
+
     taskInput.value = getLi.querySelector('h1').innerText;
     descInput.value = getLi.querySelector('h3').innerText;
 
@@ -73,6 +76,14 @@ function showForm(e, buttonCounter) {
     if (getLi.querySelector('h1').className === 'priority') {
         priorityInput.checked;
     }
+
+    //submit button
+    const addTaskSubmitButton = document.createElement("button");
+    addTaskSubmitButton.type = 'submit';
+    // addTaskSubmitButton.id = `edit-submit-button-li-${e.currentTarget.id}`;
+    addTaskSubmitButton.className = 'task-submit';
+    addTaskSubmitButton.textContent = "Submit";
+    formContainer.append(addTaskSubmitButton);
 }
 
 // function returnHandler(buttonCounter) {

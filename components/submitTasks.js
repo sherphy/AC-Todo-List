@@ -24,7 +24,6 @@ export default function submitTasks(submitButton,taskInput,
     const priority = priorityInput;
 
     inputTasksIntoContainer(title, desc, dateYear, dateMonth, dateDay, priority, counter);
-    // taskTitle.submit();
     //then put all these values in a new task, which is then added to project container
   });
 }

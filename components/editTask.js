@@ -46,7 +46,6 @@ function editSelection(buttonCounter) {
 
 function showForm(e) {
   const getLi = document.getElementById(e.currentTarget.id);
-  console.log(getLi);
   //create form 
   //prevent having multiple edits for the same task
   if (!getLi.querySelector('div')) {
@@ -104,9 +103,9 @@ function showForm(e) {
 
 function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput) {
   addTaskSubmitButton.addEventListener("click", (e) => {
-    e.preventDefault();
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
     closeForm(getLi.querySelector(".edit-form-container"));
+    e.preventDefault();
     //submit already then hide
   });
 }

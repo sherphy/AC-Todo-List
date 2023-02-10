@@ -1,3 +1,5 @@
+import editTask from "./components/editTask"
+
 edit tasks and project name option
 
 delete project option 
@@ -12,3 +14,9 @@ add Back button when submitting form
 background-y need to span infinite
 localstorage
 input forms hover
+
+VERY HACKY WORKAROUND AT editTask, 
+i basically set a counter so that when it's even then it will trigger
+basically the problem is the submission of task will close the form 
+so the showForm(e) will always end in closing the form 
+which means that the form doesnt ever open 

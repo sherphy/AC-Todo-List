@@ -32,9 +32,14 @@ function editTaskButtonHandler(buttonCounter) {
 function editSelection(buttonCounter) {
     const getOl = document.getElementById(`project-ol-${buttonCounter}`);
     const li = getOl.querySelectorAll("li");
+    var counter = 1; 
     li.forEach(list => {
         list.addEventListener("click", (e) => {
           showForm(e);
+          if (counter % 2 === 0) {
+            openForm(document.querySelector(".edit-form-container"));
+          }
+          counter++;
         });
     });
 }
@@ -42,6 +47,7 @@ function editSelection(buttonCounter) {
 function showForm(e) {
   const getLi = document.getElementById(e.currentTarget.id);
 
+  //create form 
   //prevent having multiple edits for the same task
   if (!getLi.querySelector('div')) {
   var formDiv = document.createElement("div");
@@ -84,31 +90,24 @@ function showForm(e) {
   addTaskSubmitButton.textContent = "Submit";
   formContainer.append(addTaskSubmitButton);
   }
-  else {
-    //since it is already created 
-    const editFormContainer = document.querySelector('.edit-form-container');
-    editFormContainer.style.display = 'visible';
-    console.log(editFormContainer.outerHTML + "is visible");
 
+  //get form 
+  else {
     addTaskSubmitButton = document.getElementById(`edit-submit-button-${e.currentTarget.id}`);
     taskInput = document.querySelector('.task-title');
     descInput = document.querySelector(".task-description");
     dateInput = document.querySelector(".task-date");
     priorityInput = document.querySelector(".task-priority");
   }
-  //NEED TO FIND OUT HOW TO BRING OVER ADDTASKSUBMITBUTTON
-  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
+  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput)
 }
 
 function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput) {
   addTaskSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
-
-    //hide container
-    const editFormContainer = document.querySelector('.edit-form-container');
-    editFormContainer.style.display = 'none';
-    console.log("is closed");
+    closeForm(document.querySelector(".edit-form-container"));
+    //submit already then hide
   });
 }
 
@@ -131,6 +130,16 @@ function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
   } else {
     getLi.querySelector("h1").classList.add("priority");
   }
+}
+
+function closeForm(editFormContainer) {
+  editFormContainer.style.display = 'none';
+  console.log("is closed");
+}
+
+function openForm(editFormContainer) {
+  editFormContainer.style.display = 'flex';
+  console.log("is not closed");
 }
 
 // function returnHandler(buttonCounter) {

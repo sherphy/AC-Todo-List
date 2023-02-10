@@ -1,5 +1,3 @@
-//SO WHY CANT I CLICK ON THE SAME TASK TWICE?
-
 import { dateConversion } from "./submitTasks.js";
 import { createForm } from "./tasks.js";
 
@@ -98,7 +96,7 @@ function showForm(e) {
     dateInput = getLi.querySelector(".task-date");
     priorityInput = getLi.querySelector(".task-priority");
   }
-  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput)
+  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
 }
 
 function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput) {
@@ -106,7 +104,7 @@ function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInpu
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
     closeForm(getLi.querySelector(".edit-form-container"));
     e.preventDefault();
-    //submit already then hide
+    e.stopPropagation();
   });
 }
 

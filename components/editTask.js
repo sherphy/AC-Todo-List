@@ -1,3 +1,5 @@
+//SO WHY CANT I CLICK ON THE SAME TASK TWICE?
+
 import { dateConversion } from "./submitTasks.js";
 import { createForm } from "./tasks.js";
 
@@ -21,9 +23,8 @@ function editTaskButtonHandler(buttonCounter) {
         const addButton = document.getElementById(`addTaskButton-${buttonCounter}`);
         addButton.style.display = 'none';
 
-        editSelection(buttonCounter);
-
         editTaskButton.innerText = "Return";
+        editSelection(buttonCounter);
         // returnHandler(buttonCounter);
     })
 }
@@ -33,10 +34,10 @@ function editSelection(buttonCounter) {
     const li = getOl.querySelectorAll("li");
     li.forEach(list => {
         list.addEventListener("click", (e) => {
-            showForm(e);
+          showForm(e);
         },
         //prevent having many forms 
-        {once: true}
+        // {once: true}
         );
     });
 }
@@ -44,12 +45,14 @@ function editSelection(buttonCounter) {
 function showForm(e) {
   const getLi = document.getElementById(e.currentTarget.id);
 
-  const formDiv = document.createElement("div");
+  //prevent having multiple edits for the same task
+  if (!getLi.querySelector('div')) {
+  var formDiv = document.createElement("div");
   formDiv.className = "edit-form-container";
   getLi.append(formDiv);
 
-  const formContainer = document.createElement("form");
-  const { taskInput, descInput, dateInput, priorityInput } =
+  var formContainer = document.createElement("form");
+  var { taskInput, descInput, dateInput, priorityInput } =
     createForm(formContainer);
   formDiv.append(formContainer);
   formContainer.className = "edit-form";
@@ -77,16 +80,22 @@ function showForm(e) {
   }
 
   //submit button
-  const addTaskSubmitButton = document.createElement("button");
+  var addTaskSubmitButton = document.createElement("button");
   addTaskSubmitButton.type = "submit";
-  // addTaskSubmitButton.id = `edit-submit-button-li-${e.currentTarget.id}`;
+  addTaskSubmitButton.id = `edit-submit-button-${e.target.id}`;
   addTaskSubmitButton.className = "task-submit";
   addTaskSubmitButton.textContent = "Submit";
   formContainer.append(addTaskSubmitButton);
+  }
+  //NEED TO FIND OUT HOW TO BRING OVER ADDTASKSUBMITBUTTON
+  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
+}
 
+function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput) {
   addTaskSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
+    toggleContainerDisplay(getLi);
   });
 }
 
@@ -109,6 +118,16 @@ function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
   } else {
     getLi.querySelector("h1").classList.add("priority");
   }
+}
+
+function toggleContainerDisplay(getLi) {
+    const editFormContainer = getLi.querySelector('.edit-form-container');
+    if (editFormContainer.style.display === 'none') {
+        editFormContainer.style.display = 'initial';
+    }
+    else {
+        editFormContainer.style.display = 'none';
+    }
 }
 
 

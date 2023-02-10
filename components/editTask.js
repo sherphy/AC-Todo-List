@@ -25,6 +25,7 @@ function editTaskButtonHandler(buttonCounter) {
 
         editTaskButton.innerText = "Return";
         editSelection(buttonCounter);
+        // editFormOpen = !editFormOpen;
         // returnHandler(buttonCounter);
     })
 }
@@ -35,10 +36,7 @@ function editSelection(buttonCounter) {
     li.forEach(list => {
         list.addEventListener("click", (e) => {
           showForm(e);
-        },
-        //prevent having many forms 
-        // {once: true}
-        );
+        });
     });
 }
 
@@ -82,10 +80,21 @@ function showForm(e) {
   //submit button
   var addTaskSubmitButton = document.createElement("button");
   addTaskSubmitButton.type = "submit";
-  addTaskSubmitButton.id = `edit-submit-button-${e.target.id}`;
+  addTaskSubmitButton.id = `edit-submit-button-${e.currentTarget.id}`;
   addTaskSubmitButton.className = "task-submit";
   addTaskSubmitButton.textContent = "Submit";
   formContainer.append(addTaskSubmitButton);
+  }
+  else {
+    //since it is already created 
+    addTaskSubmitButton = document.getElementById(`edit-submit-button-${e.currentTarget.id}`);
+    taskInput = document.querySelector('.task-title');
+    descInput = document.querySelector(".task-description");
+    dateInput = document.querySelector(".task-date");
+    priorityInput = document.querySelector(".task-priority");
+
+    // const editFormContainer = document.querySelector('.edit-form-container');
+    // editFormContainer.style.display = 'inherit';
   }
   //NEED TO FIND OUT HOW TO BRING OVER ADDTASKSUBMITBUTTON
   handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
@@ -95,9 +104,14 @@ function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInpu
   addTaskSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
-    toggleContainerDisplay(getLi);
+
+    //hide container
+    // const editFormContainer = document.querySelector('.edit-form-container');
+    // editFormContainer.style.display = 'none';
   });
 }
+
+
 
 function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
   getLi.querySelector("h1").innerText = taskInput.value;
@@ -119,17 +133,6 @@ function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
     getLi.querySelector("h1").classList.add("priority");
   }
 }
-
-function toggleContainerDisplay(getLi) {
-    const editFormContainer = getLi.querySelector('.edit-form-container');
-    if (editFormContainer.style.display === 'none') {
-        editFormContainer.style.display = 'initial';
-    }
-    else {
-        editFormContainer.style.display = 'none';
-    }
-}
-
 
 // function returnHandler(buttonCounter) {
 //     const editTaskButton = document.getElementById(`editButton-${buttonCounter}`);

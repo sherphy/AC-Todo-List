@@ -25,7 +25,6 @@ function editTaskButtonHandler(buttonCounter) {
 
         editTaskButton.innerText = "Return";
         editSelection(buttonCounter);
-        // editFormOpen = !editFormOpen;
         // returnHandler(buttonCounter);
     })
 }
@@ -87,14 +86,15 @@ function showForm(e) {
   }
   else {
     //since it is already created 
+    const editFormContainer = document.querySelector('.edit-form-container');
+    editFormContainer.style.display = 'visible';
+    console.log(editFormContainer.outerHTML + "is visible");
+
     addTaskSubmitButton = document.getElementById(`edit-submit-button-${e.currentTarget.id}`);
     taskInput = document.querySelector('.task-title');
     descInput = document.querySelector(".task-description");
     dateInput = document.querySelector(".task-date");
     priorityInput = document.querySelector(".task-priority");
-
-    // const editFormContainer = document.querySelector('.edit-form-container');
-    // editFormContainer.style.display = 'inherit';
   }
   //NEED TO FIND OUT HOW TO BRING OVER ADDTASKSUBMITBUTTON
   handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
@@ -106,12 +106,11 @@ function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInpu
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
 
     //hide container
-    // const editFormContainer = document.querySelector('.edit-form-container');
-    // editFormContainer.style.display = 'none';
+    const editFormContainer = document.querySelector('.edit-form-container');
+    editFormContainer.style.display = 'none';
+    console.log("is closed");
   });
 }
-
-
 
 function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
   getLi.querySelector("h1").innerText = taskInput.value;

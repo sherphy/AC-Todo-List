@@ -20,3 +20,6 @@ i basically set a counter so that when it's even then it will trigger
 basically the problem is the submission of task will close the form 
 so the showForm(e) will always end in closing the form 
 which means that the form doesnt ever open 
+
+and if there is edits to the task, it has to be submitted twice
+but if there are no edits, only submit once

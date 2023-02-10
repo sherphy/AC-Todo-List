@@ -37,7 +37,7 @@ function editSelection(buttonCounter) {
         list.addEventListener("click", (e) => {
           showForm(e);
           if (counter % 2 === 0) {
-            openForm(document.querySelector(".edit-form-container"));
+            openForm(list.querySelector(".edit-form-container"));
           }
           counter++;
         });
@@ -46,7 +46,7 @@ function editSelection(buttonCounter) {
 
 function showForm(e) {
   const getLi = document.getElementById(e.currentTarget.id);
-
+  console.log(getLi);
   //create form 
   //prevent having multiple edits for the same task
   if (!getLi.querySelector('div')) {
@@ -93,11 +93,11 @@ function showForm(e) {
 
   //get form 
   else {
-    addTaskSubmitButton = document.getElementById(`edit-submit-button-${e.currentTarget.id}`);
-    taskInput = document.querySelector('.task-title');
-    descInput = document.querySelector(".task-description");
-    dateInput = document.querySelector(".task-date");
-    priorityInput = document.querySelector(".task-priority");
+    addTaskSubmitButton = document.querySelector(`#edit-submit-button-${e.currentTarget.id}`);
+    taskInput = getLi.querySelector('.task-title');
+    descInput = getLi.querySelector(".task-description");
+    dateInput = getLi.querySelector(".task-date");
+    priorityInput = getLi.querySelector(".task-priority");
   }
   handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput)
 }
@@ -106,7 +106,7 @@ function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInpu
   addTaskSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
-    closeForm(document.querySelector(".edit-form-container"));
+    closeForm(getLi.querySelector(".edit-form-container"));
     //submit already then hide
   });
 }

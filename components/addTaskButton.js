@@ -73,7 +73,7 @@ export default function addTaskButtonFunction() {
   //didnt change the function name for addTaskButtonFunction()
   //but i should... but anyway this is for edit task button
   editTask(buttonDiv, buttonCounter);
-  
+
   buttonCounter++;
 }
 

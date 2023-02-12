@@ -1,4 +1,5 @@
 import inputTasksIntoContainer from "./inputTasks.js";
+import editTaskHandler from "./editTask.js";
 
 export default function submitTasks(submitButton,taskInput,
     descInput,dateInput,priorityInput,counter) {
@@ -12,6 +13,7 @@ export default function submitTasks(submitButton,taskInput,
     const priority = priorityInput;
 
     inputTasksIntoContainer(title, desc, dateYear, dateMonth, dateDay, priority, counter);
+    editTaskHandler(counter);
     //then put all these values in a new task, which is then added to project container
   });
 }

@@ -6,8 +6,6 @@ export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth
     //makes the add task button come back
     const addTaskButton = document.getElementById(`addTaskButton-${counter}`);
     addTaskButton.style.display = 'initial';
-    const editTaskButton = document.getElementById(`editButton-${counter}`);
-    editTaskButton.style.display = 'initial';
 
     const addTaskContainer = document.getElementById(`add-task-container-${counter}`);
     buttonContainer.removeChild(addTaskContainer);

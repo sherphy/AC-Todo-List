@@ -39,10 +39,6 @@ export default function addTaskContainerCreation(e) {
     addTaskSubmitButton.className = 'task-submit';
     addTaskSubmitButton.textContent = "Submit";
     taskTitle.appendChild(addTaskSubmitButton);
-
-    //hide edit button
-    const editButton = document.getElementById(`editButton-${counter}`);
-    editButton.style.display = 'none';
     
     submitTasks(addTaskSubmitButton,taskInput,descInput,dateInput,priorityInput, counter);
 

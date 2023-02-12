@@ -1,34 +1,7 @@
 import { dateConversion } from "./submitTasks.js";
 import { createForm } from "./tasks.js";
 
-export default function editTask(buttonDiv, buttonCounter) {
-    editTaskButtonCreation(buttonDiv, buttonCounter);
-}
-
-function editTaskButtonCreation(buttonDiv, buttonCounter) {
-    const editTaskButton = document.createElement("button");
-    editTaskButton.innerHTML = "Edit";
-    editTaskButton.className = "edit-button";
-    editTaskButton.id = `editButton-${buttonCounter}`;
-    buttonDiv.append(editTaskButton);
-    editTaskButtonHandler(buttonCounter);
-}
-
-function editTaskButtonHandler(buttonCounter) {
-    const editTaskButton = document.getElementById(`editButton-${buttonCounter}`);
-    editTaskButton.addEventListener("click", (e) => {
-        //hide add task
-        const addButton = document.getElementById(`addTaskButton-${buttonCounter}`);
-        addButton.style.display = 'none';
-
-        editTaskButton.innerText = "Return";
-        editTitle()
-        editSelection(buttonCounter);
-        returnHandler(buttonCounter);
-    })
-}
-
-function editTitle() {
+export function editTitle() {
   const getProjectTitle = document.querySelectorAll(".project h3");
   getProjectTitle.forEach(projectTitle => {
     projectTitle.style.cursor = "pointer";
@@ -44,17 +17,17 @@ function editTitle() {
   });
 }
 
+export default function editTaskHandler(buttonCounter) {
+    editSelection(buttonCounter);
+}
+
 function editSelection(buttonCounter) {
     const getOl = document.getElementById(`project-ol-${buttonCounter}`);
     const li = getOl.querySelectorAll("li");
-    var counter = 1; 
     li.forEach(list => {
         list.addEventListener("click", (e) => {
           showForm(e);
-          if (counter % 2 === 0) {
             openForm(list.querySelector(".edit-form-container"));
-          }
-          counter++;
         });
     });
 }
@@ -154,12 +127,4 @@ function closeForm(editFormContainer) {
 function openForm(editFormContainer) {
   editFormContainer.style.display = 'flex';
   console.log("is not closed");
-}
-
-function returnHandler(buttonCounter) {
-    const editTaskButton = document.getElementById(`editButton-${buttonCounter}`);
-    editTaskButton.addEventListener("click", (e) => {
-        const addTaskContainer = document.getElementById(`add-task-container-${buttonCounter}`);
-        editTaskButton.removeChild(addTaskContainer);
-    })
 }

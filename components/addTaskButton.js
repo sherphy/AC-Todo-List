@@ -53,7 +53,7 @@
 //   };
 
 //FINAL VERSION NO CRAP
-import editTask from "./editTask.js";
+import editTaskHandler, { editTitle } from "./editTask.js";
 import addTaskContainerCreation from "./tasks.js";
 
 var buttonCounter = 0;
@@ -70,11 +70,8 @@ export default function addTaskButtonFunction() {
   buttonDiv.append(addTaskButton);
   addTaskButtonClickHandler();
 
-  //didnt change the function name for addTaskButtonFunction()
-  //but i should... but anyway this is for edit task button
-  editTask(buttonDiv, buttonCounter);
-
   buttonCounter++;
+  editTitle();
 }
 
 function addTaskButtonClickHandler() {

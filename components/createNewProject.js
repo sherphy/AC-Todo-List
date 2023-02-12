@@ -80,7 +80,7 @@
 
 //FINAL VERSION NO CRAP 
 import addTaskButtonFunction from "./addTaskButton.js";
-import createIcons from "./utils/createIcons.js";
+import createIcons from "./createIcons.js";
 
 (function defaultProject() {
   addTaskButtonFunction();

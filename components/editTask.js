@@ -22,9 +22,26 @@ function editTaskButtonHandler(buttonCounter) {
         addButton.style.display = 'none';
 
         editTaskButton.innerText = "Return";
+        editTitle()
         editSelection(buttonCounter);
-        // returnHandler(buttonCounter);
+        returnHandler(buttonCounter);
     })
+}
+
+function editTitle() {
+  const getProjectTitle = document.querySelectorAll(".project h3");
+  getProjectTitle.forEach(projectTitle => {
+    projectTitle.style.cursor = "pointer";
+    projectTitle.addEventListener("click", (e) => {
+      projectTitle.contentEditable = "true";
+      projectTitle.focus();
+    });
+
+    projectTitle.addEventListener("blur", (e) => {
+      projectTitle.contentEditable = "false";
+    });
+
+  });
 }
 
 function editSelection(buttonCounter) {
@@ -139,10 +156,10 @@ function openForm(editFormContainer) {
   console.log("is not closed");
 }
 
-// function returnHandler(buttonCounter) {
-//     const editTaskButton = document.getElementById(`editButton-${buttonCounter}`);
-//     editTaskButton.addEventListener("click", (e) => {
-//         const addTaskContainer = document.getElementById(`add-task-container-${counter}`);
-//         buttonContainer.removeChild(addTaskContainer);
-//     })
-// }
+function returnHandler(buttonCounter) {
+    const editTaskButton = document.getElementById(`editButton-${buttonCounter}`);
+    editTaskButton.addEventListener("click", (e) => {
+        const addTaskContainer = document.getElementById(`add-task-container-${buttonCounter}`);
+        editTaskButton.removeChild(addTaskContainer);
+    })
+}

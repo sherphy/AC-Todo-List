@@ -1,5 +1,3 @@
-
-
 delete project option 
 // Delete existing to-do item
 function deleteToDo(event) {
@@ -12,3 +10,7 @@ add Back button when submitting form
 background-y need to span infinite
 localstorage
 input forms hover
+add keystroke maybe for the project title change
+
+when opening add task button and edit project title at the same Time, 
+the buttons will keep moving about 

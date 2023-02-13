@@ -6,15 +6,59 @@ export function editTitle() {
   getProjectTitle.forEach(projectTitle => {
     projectTitle.style.cursor = "pointer";
     projectTitle.addEventListener("click", (e) => {
+      deleteTitle(e);
       projectTitle.contentEditable = "true";
       projectTitle.focus();
+      removeAddButton();
     });
 
-    projectTitle.addEventListener("blur", (e) => {
-      projectTitle.contentEditable = "false";
+    projectTitle.addEventListener("blur", () => {projectTitle.contentEditable = "false";
+    viewAddButtion();
+    removeDeleteButton();});
+
+    projectTitle.addEventListener("keydown", (e) => {
+      if (e.key === 'Enter') {
+        projectTitle.contentEditable = "false";
+      }
     });
+
 
   });
+}
+
+function deleteTitle(e) {
+  let deleteBtn = document.querySelector('button[name="deleteButton"]');
+  if (!deleteBtn) {
+    createDeleteButton(e);
+  }
+  else if (deleteBtn.style.display === 'none') {
+      deleteBtn.style.display ='initial';
+  }
+}
+
+function createDeleteButton(e) {
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = 'Delete Project';
+  deleteButton.name = "deleteButton";
+  deleteButton.className = 'delete-button';
+  const buttonContainer = e.currentTarget.nextElementSibling.nextElementSibling;
+  buttonContainer.after(deleteButton);
+  return {deleteButton};
+}
+
+function removeAddButton() {
+  const addButton = document.querySelectorAll('.add-task-button');
+  addButton.forEach(button => button.style.display = 'none');
+}
+
+function removeDeleteButton() {
+  const removeButton = document.querySelectorAll('.delete-button');
+  removeButton.forEach(button => button.style.display = 'none');
+}
+
+function viewAddButtion() {
+  const addButton = document.querySelectorAll('.add-task-button');
+  addButton.forEach(button => button.style.display = 'inherit');
 }
 
 export default function editTaskHandler(buttonCounter) {
@@ -121,10 +165,8 @@ function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
 
 function closeForm(editFormContainer) {
   editFormContainer.style.display = 'none';
-  console.log("is closed");
 }
 
 function openForm(editFormContainer) {
   editFormContainer.style.display = 'flex';
-  console.log("is not closed");
 }

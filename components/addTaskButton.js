@@ -53,7 +53,7 @@
 //   };
 
 //FINAL VERSION NO CRAP
-import editTaskHandler, { editTitle } from "./editTask.js";
+import { editTitle } from "./editTask.js";
 import addTaskContainerCreation from "./tasks.js";
 
 var buttonCounter = 0;

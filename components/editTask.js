@@ -5,8 +5,8 @@ export function editTitle() {
   const getProjectTitle = document.querySelectorAll(".project h3");
   getProjectTitle.forEach(projectTitle => {
     projectTitle.style.cursor = "pointer";
-    projectTitle.addEventListener("click", (e) => {
-      deleteTitle(e);
+    projectTitle.addEventListener("click", () => {
+      deleteTitle();
       projectTitle.contentEditable = "true";
       projectTitle.focus();
       removeAddButton();
@@ -26,24 +26,23 @@ export function editTitle() {
   });
 }
 
-function deleteTitle(e) {
+function deleteTitle() {
   let deleteBtn = document.querySelector('button[name="deleteButton"]');
   if (!deleteBtn) {
-    createDeleteButton(e);
+    createDeleteButton();
   }
   else if (deleteBtn.style.display === 'none') {
       deleteBtn.style.display ='initial';
   }
 }
 
-function createDeleteButton(e) {
+function createDeleteButton() {
   const deleteButton = document.createElement("button");
   deleteButton.innerText = 'Delete Project';
   deleteButton.name = "deleteButton";
   deleteButton.className = 'delete-button';
-  const buttonContainer = e.currentTarget.nextElementSibling.nextElementSibling;
-  buttonContainer.after(deleteButton);
-  return {deleteButton};
+  const addButton = document.querySelectorAll('.add-task-button');
+  addButton.forEach(button => button.after(deleteButton));
 }
 
 function removeAddButton() {

@@ -8,7 +8,7 @@ export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth
     addTaskButton.style.display = 'initial';
 
     const addTaskContainer = document.getElementById(`add-task-container-${counter}`);
-    buttonContainer.removeChild(addTaskContainer);
+    parentContainer.removeChild(addTaskContainer);
     
     //ordered list
     const olContainer = document.getElementById(`project-ol-${counter}`);

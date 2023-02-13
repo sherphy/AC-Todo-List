@@ -7,8 +7,8 @@
 
 export default function deleteProject(deleteButton) {
     deleteButton.addEventListener("click", (e) => {
-        console.log(e.target.id);
-        e.stopPropagation();
+        alert("Are you sure you want to delete your entire project?");
+        e.stopImmediatePropagation();
     });
 };
 

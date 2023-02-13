@@ -17,12 +17,18 @@ function projectTitleHandler() {
       });
       
 
-      //BECAUSE OF THIS, CANT CLICK DELETE BUTTON 
+      // BECAUSE OF THIS, CANT CLICK DELETE BUTTON 
       projectTitle.addEventListener("mouseout", (e) => {
         projectTitle.contentEditable = "false";
         var counter = e.currentTarget.parentElement.id.split("-")[1];
-        viewAddButton(counter);
-        removeDeleteButton(counter);
+        const deleteButton = document.getElementById(`delete-button-${counter}`);
+        deleteButton.addEventListener("click", (e) => {
+          deleteProject(deleteButton);
+        });
+        deleteButton.addEventListener("blur", (e) => {
+          removeDeleteButton(counter);
+          viewAddButton(counter);
+        });
       });
   
       projectTitle.addEventListener("keydown", (e) => {
@@ -55,7 +61,6 @@ function createDeleteButton(counter) {
     document.getElementById(`delete-button-${counter}`).style.display =
       "inherit";
   }
-  deleteProject(deleteButton);
 }
 
 function removeAddButton(counter) {
@@ -65,7 +70,8 @@ function removeAddButton(counter) {
 
 function removeDeleteButton(counter) {
   const removeButton = document.getElementById(`delete-button-${counter}`);
-  removeButton.style.display = "none";
+  const buttonDiv = document.getElementById(`button-div-${counter}`);
+  buttonDiv.removeChild(removeButton);
 }
 
 function viewAddButton(counter) {

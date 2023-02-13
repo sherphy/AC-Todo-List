@@ -85,7 +85,7 @@ input[type=submit] {
     height: fit-content;
     font-size: x-large;
     /* to support mobile view */
-    max-width: 600px;
+    max-width: 380px;
 }
 
 .project > h3 {

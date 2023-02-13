@@ -5,59 +5,64 @@ export function editTitle() {
   const getProjectTitle = document.querySelectorAll(".project h3");
   getProjectTitle.forEach(projectTitle => {
     projectTitle.style.cursor = "pointer";
-    projectTitle.addEventListener("click", () => {
-      deleteTitle();
+    
+    projectTitle.addEventListener("click", (e) => {
+      var counter = e.currentTarget.parentElement.id.split('-')[1];
+      deleteTitle(counter);
       projectTitle.contentEditable = "true";
       projectTitle.focus();
-      removeAddButton();
     });
 
-    projectTitle.addEventListener("blur", () => {projectTitle.contentEditable = "false";
-    viewAddButtion();
-    removeDeleteButton();});
+    projectTitle.addEventListener("blur", (e) => {projectTitle.contentEditable = "false";
+      var counter = e.currentTarget.parentElement.id.split('-')[1];
+      viewAddButton(counter);
+      removeDeleteButton(counter);
+    });
 
     projectTitle.addEventListener("keydown", (e) => {
       if (e.key === 'Enter') {
         projectTitle.contentEditable = "false";
       }
     });
-
-
   });
 }
 
-function deleteTitle() {
-  let deleteBtn = document.querySelector('button[name="deleteButton"]');
-  if (!deleteBtn) {
-    createDeleteButton();
-  }
-  else if (deleteBtn.style.display === 'none') {
-      deleteBtn.style.display ='initial';
-  }
+function deleteTitle(counter) {
+    removeAddButton(counter);
+    createDeleteButton(counter);
 }
 
-function createDeleteButton() {
-  const deleteButton = document.createElement("button");
-  deleteButton.innerText = 'Delete Project';
-  deleteButton.name = "deleteButton";
-  deleteButton.className = 'delete-button';
-  const addButton = document.querySelectorAll('.add-task-button');
-  addButton.forEach(button => button.after(deleteButton));
+function createDeleteButton(counter) {
+  const addButtons = document.querySelectorAll('.add-task-button');
+  addButtons.forEach(addButton => {
+    let deleteButton = addButton.nextElementSibling;
+    if (!deleteButton || deleteButton.name !== "deleteButton") {
+      deleteButton = document.createElement("button");
+      deleteButton.innerText = 'Delete Project';
+      deleteButton.id = `delete-button-${counter}`;
+      deleteButton.name = "deleteButton";
+      deleteButton.className = 'delete-button';
+      addButton.after(deleteButton);
+    }
+    else if (deleteButton.style.display === 'none') {
+      deleteButton.style.display = 'inherit';
+    }
+  });
 }
 
-function removeAddButton() {
-  const addButton = document.querySelectorAll('.add-task-button');
-  addButton.forEach(button => button.style.display = 'none');
+function removeAddButton(counter) {
+  const addButton = document.getElementById(`addTaskButton-${counter}`);
+  addButton.style.display = 'none';
 }
 
-function removeDeleteButton() {
-  const removeButton = document.querySelectorAll('.delete-button');
-  removeButton.forEach(button => button.style.display = 'none');
+function removeDeleteButton(counter) {
+  const removeButton = document.getElementById(`delete-button-${counter}`);
+  removeButton.style.display = 'none';
 }
 
-function viewAddButtion() {
-  const addButton = document.querySelectorAll('.add-task-button');
-  addButton.forEach(button => button.style.display = 'inherit');
+function viewAddButton(counter) {
+  const addButton = document.getElementById(`addTaskButton-${counter}`);
+  addButton.style.display = 'inherit';
 }
 
 export default function editTaskHandler(buttonCounter) {

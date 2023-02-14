@@ -85,7 +85,7 @@ input[type=submit] {
     height: fit-content;
     font-size: x-large;
     /* to support mobile view */
-    max-width: 600px;
+    max-width: 380px;
 }
 
 .project > h3 {
@@ -117,9 +117,9 @@ button {
     border: 1px solid grey;
 }
 
-/* edit button */
-.edit-button {
-    background-color: #f5baf7ec;
+/* delete button */
+.delete-button {
+    background-color: #f84646ec;
 }
 
 /* tasks */

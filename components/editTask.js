@@ -1,22 +1,6 @@
 import { dateConversion } from "./submitTasks.js";
 import { createForm } from "./tasks.js";
 
-export function editTitle() {
-  const getProjectTitle = document.querySelectorAll(".project h3");
-  getProjectTitle.forEach(projectTitle => {
-    projectTitle.style.cursor = "pointer";
-    projectTitle.addEventListener("click", (e) => {
-      projectTitle.contentEditable = "true";
-      projectTitle.focus();
-    });
-
-    projectTitle.addEventListener("blur", (e) => {
-      projectTitle.contentEditable = "false";
-    });
-
-  });
-}
-
 export default function editTaskHandler(buttonCounter) {
     editSelection(buttonCounter);
 }
@@ -121,10 +105,8 @@ function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
 
 function closeForm(editFormContainer) {
   editFormContainer.style.display = 'none';
-  console.log("is closed");
 }
 
 function openForm(editFormContainer) {
   editFormContainer.style.display = 'flex';
-  console.log("is not closed");
 }

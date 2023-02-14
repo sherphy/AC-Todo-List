@@ -5,18 +5,20 @@
 //     });
 // }
 
-export default function deleteProject(deleteButton) {
+export default function deleteProject(e) {
     const confirm = window.confirm("Are you sure you want to delete your entire project?");
     if (confirm) {
-        deleteProjectHandler();
+        deleteProjectHandler(e);
     }
     else {
         window.minimize();
     }
 };
 
-function deleteProjectHandler() {
-
+function deleteProjectHandler(e) {
+    const project = e.target.parentElement.parentElement;
+    const projectBody = document.getElementById("project-body");
+    projectBody.removeChild(project);
 }
 
 export function deleteTasks() {

@@ -1,10 +1,6 @@
 import deleteProject from "./delete.js";
 
 export default function editTitle() {
-  projectTitleHandler();
-}
-
-function projectTitleHandler() {
     const getProjectTitle = document.querySelectorAll(".project h3");
     getProjectTitle.forEach((projectTitle) => {
       projectTitle.style.cursor = "pointer";
@@ -56,10 +52,10 @@ function createDeleteButton(counter) {
     deleteButton.className = "delete-button";
     addButton.after(deleteButton);
     deleteButton.addEventListener("mousedown", (e) => {
-      deleteProject(deleteButton);
+      deleteProject(e);
       e.stopPropagation();
     });
-    removeAddButton(counter);
+    addButton.style.display = "none";
   } else {
     viewDeleteButton(counter);
   }

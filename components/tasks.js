@@ -15,6 +15,7 @@
 //         checklist: checklist 
 //     };
 // }
+import { deleteTasks } from "./delete.js";
 import submitTasks from "./submitTasks.js";
 
 export default function addTaskContainerCreation(e) {

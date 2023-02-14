@@ -1,5 +1,6 @@
 import { dateConversion } from "./submitTasks.js";
 import { createForm } from "./tasks.js";
+import { deleteTasks } from "./delete.js";
 
 export default function editTaskHandler(buttonCounter) {
     editSelection(buttonCounter);
@@ -54,12 +55,19 @@ function showForm(e) {
   }
 
   //submit button
+  const buttonContainer = document.createElement("div");
+  buttonContainer.className = "back-button-container";
+  formContainer.append(buttonContainer);
+
   var addTaskSubmitButton = document.createElement("button");
   addTaskSubmitButton.type = "submit";
   addTaskSubmitButton.id = `edit-submit-button-${e.currentTarget.id}`;
   addTaskSubmitButton.className = "task-submit";
   addTaskSubmitButton.textContent = "Submit";
-  formContainer.append(addTaskSubmitButton);
+  buttonContainer.append(addTaskSubmitButton);
+  
+  //initial checkbox when task is created 
+  deleteTasks(getLi);
   }
 
   //get form 
@@ -77,6 +85,8 @@ function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInpu
   addTaskSubmitButton.addEventListener("click", (e) => {
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
     closeForm(getLi.querySelector(".edit-form-container"));
+    //checkbox when task is submitted 
+    deleteTasks(getLi);
     e.preventDefault();
     e.stopPropagation();
   });

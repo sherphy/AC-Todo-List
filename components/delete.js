@@ -21,6 +21,21 @@ function deleteProjectHandler(e) {
     projectBody.removeChild(project);
 }
 
-export function deleteTasks() {
+export function deleteTasks(getLi) {
+    const completeTaskButton = document.createElement("input");
+    completeTaskButton.type = 'checkbox';
+    completeTaskButton.className = 'complete';
+    const h1 = getLi.querySelector("h1");
+    h1.append(completeTaskButton);
 
+    // completeTaskButton.addEventListener("click", (e) => {
+    // e.preventDefault();
+    // deleteTaskHandler(completeTaskButton);
+    // });
 }
+
+// function deleteTaskHandler(deleteTaskButton) {
+//     const li = deleteTaskButton.closest("li");
+//     const ol = deleteTaskButton.closest("ol");
+//     ol.removeChild(li);
+// }

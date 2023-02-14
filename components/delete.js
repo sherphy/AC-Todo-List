@@ -22,26 +22,11 @@ function deleteProjectHandler(e) {
 }
 
 export function deleteTasks(getLi) {
-    const completeTaskButton = document.createElement("input");
-    completeTaskButton.type = 'checkbox';
-    completeTaskButton.className = 'complete';
-    const h1 = getLi.querySelector("h1");
-    h1.append(completeTaskButton);
-
-    if (completeTaskButton.checked) {
-        strikeThroughTask(h1);
-    }
-
+   
     // completeTaskButton.addEventListener("click", (e) => {
-    // e.preventDefault();
-    // strikeThroughTask(h1);
     // deleteTaskHandler(completeTaskButton);
     // // can do strikethrough first, then when project is blurred can removeChild
     // });
-}
-
-function strikeThroughTask(h1) {
-    h1.classList.add("strikethrough");
 }
 
 // function deleteTaskHandler(completeTaskButton) {

@@ -66,8 +66,11 @@ function showForm(e) {
   addTaskSubmitButton.textContent = "Submit";
   buttonContainer.append(addTaskSubmitButton);
 
-  
-  deleteTasks(getLi);
+  //complete button
+  var completeTaskButton = document.createElement("input");
+  completeTaskButton.type = 'checkbox';
+  completeTaskButton.className = 'complete';
+  getLi.querySelector("h1").append(completeTaskButton);
   }
 
   //get form 
@@ -77,24 +80,22 @@ function showForm(e) {
     descInput = getLi.querySelector(".task-description");
     dateInput = getLi.querySelector(".task-date");
     priorityInput = getLi.querySelector(".task-priority");
-    completeInput = getLi.querySelector(".complete");
+    completeTaskButton = getLi.querySelector(".complete");
   }
-  // SEE IF I NEED TO PUT COMPLETEINPUT INTO HANDLESUBMIT
-  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
+  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton);
 }
 
-function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput) {
+function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton) {
   addTaskSubmitButton.addEventListener("click", (e) => {
     //checkbox when task is submitted 
-    deleteTasks(getLi);
-    changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
+    changeValue(getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton);
     closeForm(getLi.querySelector(".edit-form-container"));
     e.preventDefault();
     e.stopPropagation();
   });
 }
 
-function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
+function changeValue(getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton) {
   getLi.querySelector("h1").innerText = taskInput.value;
   getLi.querySelector("h3").innerText = descInput.value;
 
@@ -112,6 +113,10 @@ function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
     }
   } else {
     getLi.querySelector("h1").classList.add("priority");
+  }
+
+  if (completeTaskButton.checked) {
+    getLi.querySelector("h1").classList.add("strikethrough");
   }
 }
 

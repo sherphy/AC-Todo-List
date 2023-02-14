@@ -18,17 +18,16 @@ function projectTitleHandler() {
       
 
       // BECAUSE OF THIS, CANT CLICK DELETE BUTTON 
-      projectTitle.addEventListener("mouseout", (e) => {
+      projectTitle.addEventListener("blur", (e) => {
         projectTitle.contentEditable = "false";
         var counter = e.currentTarget.parentElement.id.split("-")[1];
         const deleteButton = document.getElementById(`delete-button-${counter}`);
-        deleteButton.addEventListener("click", (e) => {
+        deleteButton.addEventListener("mousedown", (e) => {
           deleteProject(deleteButton);
+          e.stopPropagation();
         });
-        deleteButton.addEventListener("blur", (e) => {
-          removeDeleteButton(counter);
-          viewAddButton(counter);
-        });
+        viewAddButton(counter);
+        removeDeleteButton(counter);
       });
   
       projectTitle.addEventListener("keydown", (e) => {
@@ -70,8 +69,7 @@ function removeAddButton(counter) {
 
 function removeDeleteButton(counter) {
   const removeButton = document.getElementById(`delete-button-${counter}`);
-  const buttonDiv = document.getElementById(`button-div-${counter}`);
-  buttonDiv.removeChild(removeButton);
+  removeButton.style.display = "none";
 }
 
 function viewAddButton(counter) {

@@ -6,11 +6,18 @@
 // }
 
 export default function deleteProject(deleteButton) {
-    deleteButton.addEventListener("click", (e) => {
-        alert("Are you sure you want to delete your entire project?");
-        e.stopImmediatePropagation();
-    });
+    const confirm = window.confirm("Are you sure you want to delete your entire project?");
+    if (confirm) {
+        deleteProjectHandler();
+    }
+    else {
+        window.minimize();
+    }
 };
+
+function deleteProjectHandler() {
+
+}
 
 export function deleteTasks() {
 

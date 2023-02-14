@@ -22,12 +22,14 @@ function projectTitleHandler() {
         projectTitle.contentEditable = "false";
         var counter = e.currentTarget.parentElement.id.split("-")[1];
         const deleteButton = document.getElementById(`delete-button-${counter}`);
-        deleteButton.addEventListener("mousedown", (e) => {
-          deleteProject(deleteButton);
-          e.stopPropagation();
-        });
-        viewAddButton(counter);
+        if (!deleteButton) {
+          createDeleteButton(counter);
+        }
+        else {
+          viewDeleteButton(counter);
+        }
         removeDeleteButton(counter);
+        viewAddButton(counter);
       });
   
       projectTitle.addEventListener("keydown", (e) => {
@@ -35,7 +37,7 @@ function projectTitleHandler() {
           projectTitle.contentEditable = "false";
         }
       });
-    });
+  });
 }
 
 function deleteTitle(counter) {
@@ -53,12 +55,13 @@ function createDeleteButton(counter) {
     deleteButton.name = "deleteButton";
     deleteButton.className = "delete-button";
     addButton.after(deleteButton);
+    deleteButton.addEventListener("mousedown", (e) => {
+      deleteProject(deleteButton);
+      e.stopPropagation();
+    });
     removeAddButton(counter);
-  } else if (
-    document.getElementById(`delete-button-${counter}`).style.display === "none"
-  ) {
-    document.getElementById(`delete-button-${counter}`).style.display =
-      "inherit";
+  } else {
+    viewDeleteButton(counter);
   }
 }
 
@@ -75,4 +78,9 @@ function removeDeleteButton(counter) {
 function viewAddButton(counter) {
   const addButton = document.getElementById(`addTaskButton-${counter}`);
   addButton.style.display = "inherit";
+}
+
+function viewDeleteButton(counter) {
+  const deleteButton = document.getElementById(`delete-button-${counter}`);
+  deleteButton.style.display = "inherit";
 }

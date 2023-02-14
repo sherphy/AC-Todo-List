@@ -15,7 +15,6 @@
 //         checklist: checklist 
 //     };
 // }
-import { deleteTasks } from "./delete.js";
 import submitTasks from "./submitTasks.js";
 
 export default function addTaskContainerCreation(e) {
@@ -42,7 +41,6 @@ export default function addTaskContainerCreation(e) {
     taskTitle.appendChild(addTaskSubmitButton);
     
     submitTasks(addTaskSubmitButton,taskInput,descInput,dateInput,priorityInput, counter);
-
     return taskContainer;
 };
 

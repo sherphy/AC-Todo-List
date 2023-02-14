@@ -28,14 +28,24 @@ export function deleteTasks(getLi) {
     const h1 = getLi.querySelector("h1");
     h1.append(completeTaskButton);
 
+    if (completeTaskButton.checked) {
+        strikeThroughTask(h1);
+    }
+
     // completeTaskButton.addEventListener("click", (e) => {
     // e.preventDefault();
+    // strikeThroughTask(h1);
     // deleteTaskHandler(completeTaskButton);
+    // // can do strikethrough first, then when project is blurred can removeChild
     // });
 }
 
-// function deleteTaskHandler(deleteTaskButton) {
-//     const li = deleteTaskButton.closest("li");
-//     const ol = deleteTaskButton.closest("ol");
+function strikeThroughTask(h1) {
+    h1.classList.add("strikethrough");
+}
+
+// function deleteTaskHandler(completeTaskButton) {
+//     const li = completeTaskButton.closest("li");
+//     const ol = completeTaskButton.closest("ol");
 //     ol.removeChild(li);
 // }

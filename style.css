@@ -163,6 +163,7 @@ li > * {
 
 .complete {
     display: inline-block;
+    margin-left: 0.2rem;
 }
 
 /* form inputs */
@@ -210,5 +211,8 @@ li > * {
 
 .delete-task {
     background-color: #f84646ec;
-    
+}
+
+.strikethrough {
+    text-decoration: line-through;
 }

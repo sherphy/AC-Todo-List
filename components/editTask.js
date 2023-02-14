@@ -65,8 +65,8 @@ function showForm(e) {
   addTaskSubmitButton.className = "task-submit";
   addTaskSubmitButton.textContent = "Submit";
   buttonContainer.append(addTaskSubmitButton);
+
   
-  //initial checkbox when task is created 
   deleteTasks(getLi);
   }
 
@@ -77,16 +77,18 @@ function showForm(e) {
     descInput = getLi.querySelector(".task-description");
     dateInput = getLi.querySelector(".task-date");
     priorityInput = getLi.querySelector(".task-priority");
+    completeInput = getLi.querySelector(".complete");
   }
+  // SEE IF I NEED TO PUT COMPLETEINPUT INTO HANDLESUBMIT
   handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
 }
 
 function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput) {
   addTaskSubmitButton.addEventListener("click", (e) => {
-    changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
-    closeForm(getLi.querySelector(".edit-form-container"));
     //checkbox when task is submitted 
     deleteTasks(getLi);
+    changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
+    closeForm(getLi.querySelector(".edit-form-container"));
     e.preventDefault();
     e.stopPropagation();
   });

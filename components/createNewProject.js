@@ -105,7 +105,6 @@ export default function createNewProject() {
     projectDiv.append(projectTitle);
 
     const projectIcon = document.createElement("img");
-    createIcons(projectIcon, counter);
     projectIcon.className = "project-icon";
     projectTitle.append(projectIcon);
 
@@ -113,6 +112,7 @@ export default function createNewProject() {
     projectBody.append(projectDiv);
     projectForm.reset();
     counter++;
+    createIcons(projectIcon, counter);
   addTaskButtonFunction();
   });
 };

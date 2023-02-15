@@ -41,7 +41,6 @@ export default function addTaskContainerCreation(e) {
     taskTitle.appendChild(addTaskSubmitButton);
     
     submitTasks(addTaskSubmitButton,taskInput,descInput,dateInput,priorityInput, counter);
-
     return taskContainer;
 };
 

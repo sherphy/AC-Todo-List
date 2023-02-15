@@ -1,5 +1,6 @@
 import { dateConversion } from "./submitTasks.js";
 import { createForm } from "./tasks.js";
+import { deleteTasks } from "./delete.js";
 
 export default function editTaskHandler(buttonCounter) {
     editSelection(buttonCounter);
@@ -54,12 +55,22 @@ function showForm(e) {
   }
 
   //submit button
+  const buttonContainer = document.createElement("div");
+  buttonContainer.className = "back-button-container";
+  formContainer.append(buttonContainer);
+
   var addTaskSubmitButton = document.createElement("button");
   addTaskSubmitButton.type = "submit";
   addTaskSubmitButton.id = `edit-submit-button-${e.currentTarget.id}`;
   addTaskSubmitButton.className = "task-submit";
   addTaskSubmitButton.textContent = "Submit";
-  formContainer.append(addTaskSubmitButton);
+  buttonContainer.append(addTaskSubmitButton);
+
+  //complete button
+  var completeTaskButton = document.createElement("input");
+  completeTaskButton.type = 'checkbox';
+  completeTaskButton.className = 'complete';
+  getLi.querySelector("h1").append(completeTaskButton);
   }
 
   //get form 
@@ -69,20 +80,22 @@ function showForm(e) {
     descInput = getLi.querySelector(".task-description");
     dateInput = getLi.querySelector(".task-date");
     priorityInput = getLi.querySelector(".task-priority");
+    completeTaskButton = getLi.querySelector(".complete");
   }
-  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput);
+  handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton);
 }
 
-function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput) {
+function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton) {
   addTaskSubmitButton.addEventListener("click", (e) => {
-    changeValue(getLi, taskInput, descInput, dateInput, priorityInput);
+    //checkbox when task is submitted 
+    changeValue(getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton);
     closeForm(getLi.querySelector(".edit-form-container"));
     e.preventDefault();
     e.stopPropagation();
   });
 }
 
-function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
+function changeValue(getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton) {
   getLi.querySelector("h1").innerText = taskInput.value;
   getLi.querySelector("h3").innerText = descInput.value;
 
@@ -100,6 +113,10 @@ function changeValue(getLi, taskInput, descInput, dateInput, priorityInput) {
     }
   } else {
     getLi.querySelector("h1").classList.add("priority");
+  }
+
+  if (completeTaskButton.checked) {
+    getLi.querySelector("h1").classList.add("strikethrough");
   }
 }
 

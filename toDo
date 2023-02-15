@@ -1,15 +1,4 @@
-// Delete existing to-do item
-function deleteToDo(event) {
-  let item = event.target.parentNode;
-  toDoItems.removeChild(item);
-}
-
-maybe put a blur for when people click the forms, to go back 
-
-checkbox to automatically delete tasks 
-add Back button when submitting form
 background-y need to span infinite
 localstorage
 input forms hover
-add keystroke maybe for the project title change
 

@@ -135,10 +135,14 @@ li:hover {
     border-radius: 5%;
 }
 
+li > * {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .priority {
     text-decoration: solid;
     color: rgb(248, 120, 120);
-    width: max-content;
 }
 
 .title {
@@ -157,6 +161,11 @@ li:hover {
     color: rgb(128, 126, 126);
 }
 
+.complete {
+    display: inline-block;
+    margin-left: 0.2rem;
+}
+
 /* form inputs */
 .add-task-container, .edit-form-container {
     display: flex;
@@ -172,16 +181,19 @@ li:hover {
 .task-priority-label, .task-priority
 {
     display: inline-block;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
-.task-priority {
+.task-priority, .task-priority-label {
     margin-left: 3%;
     margin-bottom: 0.5%;
 }
 
-.task-submit {
-    background-color:rgba(243, 175, 111, 0.822);
+.back-button-container {
+    display: flex;
+}
+
+.task-submit, .delete-task {
     display: flex;
     text-align: center;
     font-size: large;
@@ -189,7 +201,18 @@ li:hover {
     border-radius: 10%;
     border: 1px solid grey;
     font-family: Arial, Helvetica, sans-serif;
-    margin: auto;
     padding: 2% 2%;
+    margin: 0.2rem auto;
 }
 
+.task-submit {
+    background-color:rgba(243, 175, 111, 0.822);
+}
+
+.delete-task {
+    background-color: #f84646ec;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}

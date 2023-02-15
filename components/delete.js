@@ -21,6 +21,16 @@ function deleteProjectHandler(e) {
     projectBody.removeChild(project);
 }
 
-export function deleteTasks() {
-
+export function deleteTasks(getLi) {
+   
+    // completeTaskButton.addEventListener("click", (e) => {
+    // deleteTaskHandler(completeTaskButton);
+    // // can do strikethrough first, then when project container is blurred can removeChild
+    // });
 }
+
+// function deleteTaskHandler(completeTaskButton) {
+//     const li = completeTaskButton.closest("li");
+//     const ol = completeTaskButton.closest("ol");
+//     ol.removeChild(li);
+// }

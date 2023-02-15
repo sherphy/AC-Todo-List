@@ -1,13 +1,13 @@
 export default function createIcons(projectIcon,counter) {
     counter = counter%10;
     if (counter === 0) {
-        projectIcon.src = './utils/icon0.png';
+        projectIcon.src = 'utils/icon0.png';
     }
     else if (counter === 1) {
-        projectIcon.src = './utils/icon1.png';
+        projectIcon.src = 'utils/icon1.png';
     }
     else if (counter === 2) {
-        projectIcon.src = './utils/icon2.png';
+        projectIcon.src = 'utils/icon2.png';
     }
     else if (counter === 3) {
         projectIcon.src = './utils/icon3.png';

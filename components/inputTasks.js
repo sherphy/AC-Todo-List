@@ -1,22 +1,20 @@
 var listTaskCounter = 1;
 export default function inputTasksIntoContainer(title, desc, dateYear, dateMonth, dateDay, priority, counter) {
     const parentContainer = document.getElementById(`project-${counter}`);
-    const buttonContainer = document.getElementById(`button-div-${counter}`);
 
     //makes the add task button come back
     const addTaskButton = document.getElementById(`addTaskButton-${counter}`);
     addTaskButton.style.display = 'initial';
-    const editTaskButton = document.getElementById(`editButton-${counter}`);
-    editTaskButton.style.display = 'initial';
 
     const addTaskContainer = document.getElementById(`add-task-container-${counter}`);
-    buttonContainer.removeChild(addTaskContainer);
+    parentContainer.removeChild(addTaskContainer);
     
     //ordered list
     const olContainer = document.getElementById(`project-ol-${counter}`);
     parentContainer.append(olContainer);
 
     const taskContainer = document.createElement("li");
+    taskContainer.id=`project-${counter}-list-${listTaskCounter}`;
     olContainer.append(taskContainer);
 
     //title

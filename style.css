@@ -85,7 +85,7 @@ input[type=submit] {
     height: fit-content;
     font-size: x-large;
     /* to support mobile view */
-    max-width: 600px;
+    max-width: 380px;
 }
 
 .project > h3 {
@@ -109,7 +109,7 @@ input[type=submit] {
 
 button {
     background-color:rgb(174, 243, 200);
-    margin: 0 0.5rem;
+    margin: 0 0.5rem 0.5rem 0.5rem;
     font-size: large;
     padding: 0.5rem;
     width: auto;
@@ -117,9 +117,9 @@ button {
     border: 1px solid grey;
 }
 
-/* edit button */
-.edit-button {
-    background-color: #f5baf7ec;
+/* delete button */
+.delete-button {
+    background-color: #f84646ec;
 }
 
 /* tasks */
@@ -127,12 +127,22 @@ li {
     list-style-position: inside;
     list-style-image: url("./utils/rsz_11animal_crossing_leafsvg.png");
     padding-top: 0.4em; 
+    color:#4ec8f8;
+}
+
+li:hover {
+    background-color: rgba(238, 238, 238, 0.705);
+    border-radius: 5%;
+}
+
+li > * {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .priority {
     text-decoration: solid;
-    background-color: rgba(248, 145, 145, 0.911);
-    width: max-content;
+    color: rgb(248, 120, 120);
 }
 
 .title {
@@ -143,7 +153,7 @@ li {
 .date {
     margin: 0 0 0 1em;
     float: right;
-    color: #5cb6da;
+    color: rgb(128, 126, 126);
 }
 
 .desc {
@@ -151,30 +161,39 @@ li {
     color: rgb(128, 126, 126);
 }
 
+.complete {
+    display: inline-block;
+    margin-left: 0.2rem;
+}
+
 /* form inputs */
-.add-task-container {
+.add-task-container, .edit-form-container {
     display: flex;
     justify-content: center;
 }
 
-.add-task-form > * {
+.add-task-form > * , .edit-form > * {
     display: block;
     font-size: medium;
+    color: black;
 }
 
 .task-priority-label, .task-priority
 {
     display: inline-block;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
-.task-priority {
+.task-priority, .task-priority-label {
     margin-left: 3%;
     margin-bottom: 0.5%;
 }
 
-.task-submit {
-    background-color:rgba(243, 175, 111, 0.822);
+.back-button-container {
+    display: flex;
+}
+
+.task-submit, .delete-task {
     display: flex;
     text-align: center;
     font-size: large;
@@ -182,7 +201,18 @@ li {
     border-radius: 10%;
     border: 1px solid grey;
     font-family: Arial, Helvetica, sans-serif;
-    margin: auto;
     padding: 2% 2%;
+    margin: 0.2rem auto;
 }
 
+.task-submit {
+    background-color:rgba(243, 175, 111, 0.822);
+}
+
+.delete-task {
+    background-color: #f84646ec;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}

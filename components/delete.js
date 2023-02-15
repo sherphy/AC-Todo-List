@@ -25,7 +25,7 @@ export function deleteTasks(getLi) {
    
     // completeTaskButton.addEventListener("click", (e) => {
     // deleteTaskHandler(completeTaskButton);
-    // // can do strikethrough first, then when project is blurred can removeChild
+    // // can do strikethrough first, then when project container is blurred can removeChild
     // });
 }
 

@@ -113,7 +113,8 @@ export default function createNewProject() {
     projectForm.reset();
     counter++;
     createIcons(projectIcon, counter);
-  addTaskButtonFunction();
+
+    addTaskButtonFunction();
   });
 };
 

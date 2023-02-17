@@ -15,22 +15,15 @@ export default function deleteProject(e) {
     }
 };
 
-function deleteProjectHandler(e) {
+export function deleteProjectHandler(e) {
     const project = e.target.parentElement.parentElement;
     const projectBody = document.getElementById("project-body");
     projectBody.removeChild(project);
 }
 
-export function deleteTasks(getLi) {
-   
-    // completeTaskButton.addEventListener("click", (e) => {
-    // deleteTaskHandler(completeTaskButton);
-    // // can do strikethrough first, then when project container is blurred can removeChild
-    // });
+//must continue after strikethrough event to delete
+export function deleteTaskHandler(completeTaskButton) {
+    const li = completeTaskButton.closest("li");
+    const ol = completeTaskButton.closest("ol");
+    ol.removeChild(li);
 }
-
-// function deleteTaskHandler(completeTaskButton) {
-//     const li = completeTaskButton.closest("li");
-//     const ol = completeTaskButton.closest("ol");
-//     ol.removeChild(li);
-// }

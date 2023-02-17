@@ -1,6 +1,6 @@
 import { dateConversion } from "./submitTasks.js";
 import { createForm } from "./tasks.js";
-import { deleteTasks } from "./delete.js";
+import { deleteTaskHandler } from "./delete.js";
 
 export default function editTaskHandler(buttonCounter) {
     editSelection(buttonCounter);
@@ -87,7 +87,6 @@ function showForm(e) {
 
 function handleSubmit(addTaskSubmitButton, getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton) {
   addTaskSubmitButton.addEventListener("click", (e) => {
-    //checkbox when task is submitted 
     changeValue(getLi, taskInput, descInput, dateInput, priorityInput, completeTaskButton);
     closeForm(getLi.querySelector(".edit-form-container"));
     e.preventDefault();
